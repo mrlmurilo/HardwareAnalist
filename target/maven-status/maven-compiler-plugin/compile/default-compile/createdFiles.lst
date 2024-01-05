@@ -1,0 +1,4 @@
+com\murilo\hardwareanalist\Connection\ConnectionFactory.class
+com\murilo\hardwareanalist\Connection\HardwareDAO.class
+com\murilo\hardwareanalist\Main.class
+com\murilo\hardwareanalist\Hardware.class
