@@ -1,5 +1,7 @@
 package com.murilo.hardwareanalist;
 
+import com.sun.management.OperatingSystemMXBean;
+import java.lang.management.ManagementFactory;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -19,15 +21,8 @@ public class Hardware {
         return idPc;
     }
 
-    public void setIdPc(Integer idPc) {
-        this.idPc = idPc;
-    }
-
     public String getNomePc() {
-        return nomePc;
-    }
 
-    public void setNomePc() {
         String hostname = "Unknown";
 
         try {
@@ -37,14 +32,10 @@ public class Hardware {
         } catch (UnknownHostException ex) {
             ex.printStackTrace();
         }
-        this.nomePc = hostname;
+        return hostname;
     }
 
     public String getIpPc() {
-        return ipPc;
-    }
-
-    public void setIpPc() {
         String ipPc = "Unknow";
 
         try {
@@ -54,30 +45,25 @@ public class Hardware {
         } catch (UnknownHostException ex) {
             ex.printStackTrace();
         }
-        this.ipPc = ipPc;
+        return ipPc;
     }
 
     public String getSoPc() {
-        return soPc;
-    }
-
-    public void setSoPc(String soPc) {
-        this.soPc = soPc;
+        String soPC = System.getProperty("os.name");
+        return soPC;
     }
 
     public String getVersaoSO() {
+        String versaoSO = System.getProperty("os.version");
         return versaoSO;
     }
 
-    public void setVersaoSO(String versaoSO) {
-        this.versaoSO = versaoSO;
-    }
-
     public String getMemoriaPc() {
+        OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
+        long totalMemorySize = osBean.getTotalPhysicalMemorySize();
+        double totalMemoryGb = totalMemorySize / Math.pow(1024, 3);
+        System.out.printf("Memória RAM Total: %.2f GB%n", totalMemoryGb);
+        String memoriaPc = Double.toString(totalMemoryGb);
         return memoriaPc;
-    }
-
-    public void setMemoriaPc(String memoriaPc) {
-        this.memoriaPc = memoriaPc;
     }
 }
