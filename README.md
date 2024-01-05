@@ -14,7 +14,7 @@ O software é capta os seguintes recursos da máquina:
 
 The software is able to get informations about the machine's Hardware.
 
-The software can get this resurces from the machine:
+This software can get this resurces from the machine:
 
 - Name of the device;
 - Ip from the machine;
